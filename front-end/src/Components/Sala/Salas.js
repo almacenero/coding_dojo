@@ -1,10 +1,10 @@
 import React from 'react' 
 import { Grid } from '@material-ui/core';
 import { Query, Mutation } from "react-apollo";
-
+import { gql } from "apollo-boost";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { gql } from "apollo-boost";
+
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 const borde = css({
