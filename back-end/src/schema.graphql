@@ -1,0 +1,14 @@
+type Sala {
+    name: String
+    ubication: String
+    date: String
+}
+
+
+type Query {
+   allSalas: [Sala] 
+}
+
+type Mutation {
+    createSala(name: String, ubication: String, date: String): Sala!
+}
