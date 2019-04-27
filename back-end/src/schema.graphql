@@ -1,4 +1,5 @@
 type Sala {
+    _id: String
     name: String
     ubication: String
     date: String
@@ -11,4 +12,5 @@ type Query {
 
 type Mutation {
     createSala(name: String, ubication: String, date: String): Sala!
+    ##deleteSala(_id: string): Sala!
 }
