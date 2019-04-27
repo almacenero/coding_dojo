@@ -1,8 +1,8 @@
 const { GraphQLServer } = require('graphql-yoga')
 const Query = require('./src/resolvers/Query')
 const Mutation = require('./src/resolvers/Mutation')
-//const dotenv = require('dotenv');
-//dotenv.config()
+const dotenv = require('dotenv');
+dotenv.config()
 
 const resolvers = {     
       Query, 

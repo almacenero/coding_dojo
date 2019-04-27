@@ -1,16 +1,35 @@
-type Sala {
+input inputInvitado {
+    _id: String
+    mail: String
+    name: String
+}
+type Invitado {
+    _id: String
+    name: String
+    mail: String
+}
+
+type Sala{
     _id: String
     name: String
     ubication: String
-    date: String
+    date: String,
+    invitados: [Invitado]
 }
 
 
 type Query {
    allSalas: [Sala] 
+   
+   allInvitados: [Invitado]
 }
 
 type Mutation {
+    createInvitado(name: String, mail: String): Invitado!
+    deleteInvitado(_id: String):Invitado!
+
     createSala(name: String, ubication: String, date: String): Sala!
-    ##deleteSala(_id: string): Sala!
+    deleteSala(_id: String): Sala!
+
+    invitadosSala(_id: String, invitados: [inputInvitado]): Sala
 }

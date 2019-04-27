@@ -8,6 +8,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 //My Context
 import {VisibilidadProvider} from './Context/VisibilidadContext'
+import {InvitadosProvider} from './Context/InvitadosContext'
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
 });
@@ -15,11 +16,14 @@ const client = new ApolloClient({
 
 
 ReactDOM.render(
-      <VisibilidadProvider>
-            <ApolloProvider client={client}>
-                  <App />
-            </ApolloProvider>  
-      </VisibilidadProvider>
+      <InvitadosProvider>
+            <VisibilidadProvider>
+                  <ApolloProvider client={client}>
+                        <App />
+                  </ApolloProvider>  
+            </VisibilidadProvider>
+      </InvitadosProvider>
+      
       
 , document.getElementById('root'));
 

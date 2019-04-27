@@ -1,9 +1,11 @@
-import React from 'react' 
+import React, {useState} from 'react' 
 import { Grid } from '@material-ui/core';
 import { Query, Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
+import AlertaGestionSala from './../Alertas/AlertaGestionSala'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -32,6 +34,10 @@ export const DELETE_SALA = gql`
  `;
 
 const Salas = () => {
+    const [open, setopen] = useState(false)
+    const [nameTemp, setnameTemp] = useState('')
+    const [ubTemp, setubTemp] = useState('')
+
       return <>
             <Grid container direction="row"
                   justify="center"
@@ -58,11 +64,24 @@ const Salas = () => {
                   </IconButton>
                   }}
                   </Mutation>
-                 
+                  <Button variant="contained" color="primary"  type='submit'
+                  onClick={()=>{
+                    setopen(true)
+                    setnameTemp(sala.name)
+                    setubTemp(sala.ubication)
+                  }}>
+                      Gestionar
+                  </Button>
                   </li>)
                 }}
                 </Query>
           </ul>
+          <AlertaGestionSala 
+          open={open}
+          handleClose={setopen}
+          name={nameTemp}
+          ubication={ubTemp}
+          />
       </>
 }
 

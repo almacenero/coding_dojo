@@ -32,67 +32,73 @@ const CrearInvitado = () => {
             if(name === "mail"){setmailInput(value)}
       }
       return <>
-      <Grid container>
+      <Grid container direction="row"
+                  justify="center"
+                  alignItems="center">
             <div>Mi Invitado</div>
       </Grid>
-      <Mutation mutation={CREAR_INVITADO}>
-      {(createInvitado, {data,loading, error})=>{
-             if (loading) return "Loading...."
-             if (error) return `Error!: ${error}`
-             return <form css={formatForm} onSubmit={(e)=>{
-                  e.preventDefault()
-                 createInvitado({
-                        variables: {
-                              name: nameInput,
-                              mail: mailInput
-                        }})
-                  setnameInput('')
-                  setmailInput('')      
-             }}>
-                        <Grid container 
-                  direction="row"
+      <Grid container direction="row"
                   justify="center"
                   alignItems="center">
-                        <div><i><b>{nameInput}</b></i></div>
-                  </Grid>
-                  <Grid container >
-                        <div>Nombre:</div>
-                  </Grid>
-                  <Grid container >
-                        <input  
-                        required 
-                        name="name" 
-                        placeholder={nameInput}
-                        onChange={handleChange}>
-                        </input>
-                  </Grid>
-                  <Grid container >
-                        <div>Correo:</div>
-                  </Grid>
-                  <Grid container >
-                        <input required 
-                        name="mail" 
-                        rows="5" cols="22"
-                        placeholder={mailInput}
-                        onChange={handleChange}>
-                        </input>
-                  </Grid>
-                  <Grid container 
-                  direction="row"
-                  justify="center"
-                  alignItems="center">
-                  <div css={{
-                        marginTop: 10
+            <Mutation mutation={CREAR_INVITADO}>
+            {(createInvitado, {data,loading, error})=>{
+                  if (loading) return "Loading...."
+                  if (error) return `Error!: ${error}`
+                  return <form css={formatForm} onSubmit={(e)=>{
+                        e.preventDefault()
+                  createInvitado({
+                              variables: {
+                                    name: nameInput,
+                                    mail: mailInput
+                              }})
+                        setnameInput('')
+                        setmailInput('')      
                   }}>
-                  <Button variant="contained" color="primary"  type='submit'>
-                                    Crear
-                  </Button>
-                  </div>
-                  
-                  </Grid>
-            </form>
-      }}
-      </Mutation>
+                              <Grid container 
+                        direction="row"
+                        justify="center"
+                        alignItems="center">
+                              <div><i><b>{nameInput}</b></i></div>
+                        </Grid>
+                        <Grid container >
+                              <div>Nombre:</div>
+                        </Grid>
+                        <Grid container >
+                              <input  
+                              required 
+                              name="name" 
+                              placeholder={nameInput}
+                              onChange={handleChange}>
+                              </input>
+                        </Grid>
+                        <Grid container >
+                              <div>Correo:</div>
+                        </Grid>
+                        <Grid container >
+                              <input required 
+                              name="mail" 
+                              rows="5" cols="22"
+                              placeholder={mailInput}
+                              onChange={handleChange}>
+                              </input>
+                        </Grid>
+                        <Grid container 
+                        direction="row"
+                        justify="center"
+                        alignItems="center">
+                        <div css={{
+                              marginTop: 10
+                        }}>
+                        <Button variant="contained" color="primary"  type='submit'>
+                                          Crear
+                        </Button>
+                        </div>
+                        
+                        </Grid>
+                  </form>
+            }}
+            </Mutation>
+      </Grid>
       </>
 }
 
